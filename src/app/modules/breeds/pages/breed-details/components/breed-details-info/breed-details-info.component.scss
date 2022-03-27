@@ -1,0 +1,12 @@
+.breed-details {
+  &__dl {
+    margin-bottom: 20px;
+  }
+
+  &__dt {
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--dark-faded);
+  }
+}

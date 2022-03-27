@@ -1,0 +1,11 @@
+<app-page-content-template [maxWidth]="900">
+
+  <app-fluid-loading *ngIf="(isBreedDetailsContentLoading$ | async)" [height]="500"></app-fluid-loading>
+
+  <ng-container *ngIf="!(isBreedDetailsContentLoading$ | async)">
+    <app-breed-details-title [breedDetailsItems$]="breedDetailsItems$"></app-breed-details-title>
+    <app-breed-details-info [breedDetailsItems$]="breedDetailsItems$"></app-breed-details-info>
+    <app-breed-details-photos [breedPhotosItems$]="breedPhotosItems$"></app-breed-details-photos>
+  </ng-container>
+
+</app-page-content-template>

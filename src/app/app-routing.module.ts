@@ -5,12 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./modules/home/home.module').then((m) => m.HomeModule),
+      import('./modules/breeds/breeds.module').then((m) => m.BreedsModule),
   },
   {
-    path: 'kierowcy',
+    path: 'settings',
     loadChildren: () =>
-      import('./modules/drivers/drivers.module').then((m) => m.DriversModule),
+      import('./modules/settings/settings.module').then((m) => m.SettingsModule),
   },
 ];
 

@@ -1,0 +1,48 @@
+<div class="pt-3">
+  <app-table
+    [items$]="breedsListItems$"
+    [loading$]="breedsListLoading$"
+    [success$]="breedsListSuccess$"
+    [error$]="breedsListError$"
+  >
+    <table mat-table [dataSource]="dataSource" *ngIf="(breedsListItems$ | async)" class="w-100">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
+
+      <!-- Group Column -->
+      <ng-container matColumnDef="group">
+        <th mat-header-cell *matHeaderCellDef>Group</th>
+        <td mat-cell *matCellDef="let element">{{element.breed_group}}</td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="goToDetails(element.name)"
+            aria-label="Go to details"
+            class="ml-1">
+            <mat-icon>launch</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 50]"
+      showFirstLastButtons
+      aria-label="Select page of breeds">
+    </mat-paginator>
+  </app-table>
+</div>

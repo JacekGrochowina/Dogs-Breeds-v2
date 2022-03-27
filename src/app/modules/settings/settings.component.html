@@ -1,0 +1,57 @@
+<app-page-content-template [maxWidth]="900">
+  <h1>Settings</h1>
+  <mat-divider></mat-divider>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="settings__form form pt-4">
+
+    <div class="row">
+
+      <div class="form__row option col-6">
+        <div class="option__text">
+          <p>Set the amount of displayed photos in breed's details</p>
+        </div>
+        <div class="option__input">
+          <mat-form-field appearance="fill" class="w-100 mb-2">
+            <mat-label>Photo amount</mat-label>
+            <input
+              matInput
+              required
+              cdkFocusInitial
+              type="number"
+              formControlName="photoAmount"
+              placeholder="Photo amount">
+            <mat-hint>Podaj imię</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form__row option col-6">
+        <div class="option__text">
+          <p>Set the sidenav mode</p>
+        </div>
+        <div class="option__input">
+          <mat-form-field appearance="fill" class="w-100 mb-2">
+            <mat-label>Sidenav mode</mat-label>
+            <mat-select
+              matInput
+              required
+              formControlName="sidenavMode"
+              placeholder="Sidenav mode">
+              <mat-option value="side">Side</mat-option>
+              <mat-option value="over">Over</mat-option>
+              <mat-option value="push">Push</mat-option>
+            </mat-select>
+            <mat-hint>Podaj imię</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button mat-stroked-button class="mr-2">Resetuj</button>
+        <button mat-flat-button color="primary">Zastosuj</button>
+      </div>
+
+    </div>
+
+  </form>
+</app-page-content-template>

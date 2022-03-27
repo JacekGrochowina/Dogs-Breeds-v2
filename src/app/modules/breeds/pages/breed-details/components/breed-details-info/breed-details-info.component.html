@@ -1,0 +1,37 @@
+<div class="row py-4">
+  <div class="col-6">
+    <dl class="breed-details__dl">
+      <dt class="breed-details__dt">Breed</dt>
+      <dd class="breed-details__dd">{{(breedDetailsItems$ | async)?.name}}</dd>
+    </dl>
+
+    <dl class="breed-details__dl">
+      <dt class="breed-details__dt">Breed Group</dt>
+      <dd class="breed-details__dd">{{(breedDetailsItems$ | async)?.breed_group}}</dd>
+    </dl>
+
+    <dl class="breed-details__dl">
+      <dt class="breed-details__dt">Life Span</dt>
+      <dd class="breed-details__dd">{{(breedDetailsItems$ | async)?.life_span}}</dd>
+    </dl>
+  </div>
+
+  <div class="col-6">
+    <dl class="breed-details__dl">
+      <dt class="breed-details__dt">Weigth</dt>
+      <dd class="breed-details__dd">{{(breedDetailsItems$ | async)?.weight?.metric}} kg</dd>
+    </dl>
+
+    <dl class="breed-details__dl">
+      <dt class="breed-details__dt">Height</dt>
+      <dd class="breed-details__dd">{{(breedDetailsItems$ | async)?.height?.metric}} cm</dd>
+    </dl>
+  </div>
+
+  <div class="col-12">
+    <dl class="breed-details__dl">
+      <dt class="breed-details__dt">Temperament</dt>
+      <dd class="breed-details__dd">{{(breedDetailsItems$ | async)?.temperament}}</dd>
+    </dl>
+  </div>
+</div>

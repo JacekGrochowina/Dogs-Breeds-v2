@@ -13,8 +13,8 @@ import { environment } from 'src/environments/environment';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { appReducers } from './store/app.reducers';
 import { AppState } from './store/app.state';
-import { DriversFacade } from './store/drivers/drivers.facade';
-import { DriversEffects } from './store/drivers/drivers.effects';
+import { BreedsFacade } from './store/breeds/breeds.facade';
+import { BreedsEffects } from './store/breeds/breeds.effects';
 import { SettingsFacade } from './store/settings/settings.facade';
 import { SettingsEffects } from './store/settings/settings.effects';
 
@@ -28,13 +28,13 @@ import { SettingsEffects } from './store/settings/settings.effects';
     MatSidenavModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(appReducers as ActionReducerMap<AppState>),
-    EffectsModule.forRoot([SettingsEffects, DriversEffects]),
+    EffectsModule.forRoot([SettingsEffects, BreedsEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
   ],
-  providers: [SettingsFacade, DriversFacade, { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
+  providers: [SettingsFacade, BreedsFacade, { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

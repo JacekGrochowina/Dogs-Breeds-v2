@@ -1,0 +1,5 @@
+<div class="d-flex flex-wrap">
+  <div *ngFor="let photo of breedPhotosItems$ | async" class="breed-details__image">
+    <img [src]="photo.url"/>
+  </div>
+</div>

@@ -10,14 +10,14 @@ export class SidenavComponent {
 
   sidenavList: SidenavItemInterface[] = [
     {
-      name: 'Podsumowanie',
-      icon: 'analytics',
+      name: 'Breeds',
+      icon: 'pets',
       path: '',
     },
     {
-      name: 'Kierowcy',
-      icon: 'people',
-      path: 'kierowcy',
+      name: 'Settings',
+      icon: 'settings',
+      path: 'settings',
     },
   ];
 

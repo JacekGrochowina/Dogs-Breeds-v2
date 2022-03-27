@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 import { map, takeUntil } from 'rxjs/operators';
+import { ErrorResponse } from '../../../utils/interfaces/error-response.interface';
 
 @Component({
   selector: 'app-table-error',
@@ -10,7 +10,7 @@ import { map, takeUntil } from 'rxjs/operators';
 })
 export class TableErrorComponent implements OnInit {
 
-  @Input() error$!: Observable<HttpErrorResponse>;
+  @Input() error$!: Observable<ErrorResponse>;
 
   public errorMessage$!: Observable<string>;
   private unsubscribe$ = new Subject<void>();
@@ -22,7 +22,7 @@ export class TableErrorComponent implements OnInit {
   private getErrorMessage(): Observable<string> {
     return this.error$.pipe(
       takeUntil(this.unsubscribe$),
-      map((httpErrorResponse) => httpErrorResponse.error.message)
+      map((error) => error.message)
     );
   }
 

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { combineLatest, Observable, Subject } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 import { map, takeUntil } from 'rxjs/operators';
+import { ErrorResponse } from '../../utils/interfaces/error-response.interface';
 
 @Component({
   selector: 'app-table',
@@ -13,7 +13,7 @@ export class TableComponent implements OnInit {
   @Input() items$!: Observable<any[]>;
   @Input() loading$!: Observable<boolean>;
   @Input() success$!: Observable<boolean>;
-  @Input() error$!: Observable<HttpErrorResponse>;
+  @Input() error$!: Observable<ErrorResponse>;
 
   public isEmpty$!: Observable<boolean>;
   public isTableErrorVisible$!: Observable<boolean>;
