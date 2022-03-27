@@ -20,7 +20,15 @@
               type="number"
               formControlName="photoAmount"
               placeholder="Photo amount">
-            <mat-hint>Podaj imię</mat-hint>
+            <mat-error *ngIf="form.controls.photoAmount.hasError('required')">
+              Field <strong>is required</strong>
+            </mat-error>
+            <mat-error *ngIf="form.controls.photoAmount.hasError('min')">
+              Min value <strong>1</strong>
+            </mat-error>
+            <mat-error *ngIf="form.controls.photoAmount.hasError('max')">
+              Max value <strong>20</strong>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -41,14 +49,16 @@
               <mat-option value="over">Over</mat-option>
               <mat-option value="push">Push</mat-option>
             </mat-select>
-            <mat-hint>Podaj imię</mat-hint>
+            <mat-error *ngIf="form.controls.sidenavMode.hasError('required')">
+              Field <strong>is required</strong>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
 
       <div class="col-12 d-flex justify-content-end mt-3">
         <button mat-stroked-button class="mr-2">Resetuj</button>
-        <button mat-flat-button color="primary">Zastosuj</button>
+        <button [disabled]="!form.valid || !form.dirty" mat-flat-button color="primary">Zastosuj</button>
       </div>
 
     </div>

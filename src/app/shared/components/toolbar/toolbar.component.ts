@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { SettingsFacade } from '../../../store/settings/settings.facade';
-import { Themes } from '../../utils/enums/themes.enums';
+import { Themes } from '../../utils/enums/themes.enum';
 
 @Component({
   selector: 'app-toolbar',

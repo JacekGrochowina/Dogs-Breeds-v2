@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Themes } from './shared/utils/enums/themes.enums';
+import { Themes } from './shared/utils/enums/themes.enum';
 import { SettingsFacade } from './store/settings/settings.facade';
 import { map, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
+import { SidenavModes } from './shared/utils/enums/sidenav-modes.enum';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,9 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.getThemeFromLocalStorage();
+    this.getPhotoAmountFromLocalStorage();
+    this.getSidenavModeFromLocalStorage();
+
     this.theme = this.getTheme();
   }
 
@@ -40,6 +44,31 @@ export class AppComponent implements OnInit {
         break;
       default:
         this.settingsFacade.setTheme(Themes.light);
+        break;
+    }
+  }
+
+  private getPhotoAmountFromLocalStorage(): void {
+    const amount = Number(localStorage.getItem('photoAmount'));
+
+    this.settingsFacade.setPhotoAmount(amount);
+  }
+
+  private getSidenavModeFromLocalStorage(): void {
+    const mode = localStorage.getItem('sidenavMode');
+
+    switch (mode) {
+      case SidenavModes.side:
+        this.settingsFacade.setSidenavMode(SidenavModes.side);
+        break;
+      case SidenavModes.over:
+        this.settingsFacade.setSidenavMode(SidenavModes.over);
+        break;
+      case SidenavModes.push:
+        this.settingsFacade.setSidenavMode(SidenavModes.push);
+        break;
+      default:
+        this.settingsFacade.setSidenavMode(SidenavModes.side);
         break;
     }
   }

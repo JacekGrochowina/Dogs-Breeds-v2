@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Themes } from '../../shared/utils/enums/themes.enums';
+import { Themes } from '../../shared/utils/enums/themes.enum';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { SidenavModes } from '../../shared/utils/enums/sidenav-modes.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,14 @@ export class SettingsService {
     }
 
     overlayContainerClasses.add(theme);
+  }
+
+  public setPhotoAmount(photoAmount: number): void {
+    localStorage.setItem('photoAmount', String(photoAmount));
+  }
+
+  public setSidenavMode(sidenavMode: SidenavModes): void {
+    localStorage.setItem('sidenavMode', sidenavMode);
   }
 
 }

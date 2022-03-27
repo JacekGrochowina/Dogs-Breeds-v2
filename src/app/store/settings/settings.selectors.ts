@@ -9,3 +9,15 @@ export const selectTheme = createSelector(
   selectSettings,
   (state: SettingsState) => state.theme
 );
+
+// ========== Selector Photo Amount
+export const selectPhotoAmount = createSelector(
+  selectSettings,
+  (state: SettingsState) => state.photoAmount
+);
+
+// ========== Selector Sidenav Mode
+export const selectSidenavMode = createSelector(
+  selectSettings,
+  (state: SettingsState) => state.sidenavMode
+);

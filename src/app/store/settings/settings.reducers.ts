@@ -13,6 +13,20 @@ export function SettingsReducers(
       };
     }
 
+    case SettingsActionTypes.setPhotoAmount: {
+      return {
+        ...state,
+        photoAmount: action.payload
+      };
+    }
+
+    case SettingsActionTypes.setSidenavMode: {
+      return {
+        ...state,
+        sidenavMode: action.payload
+      };
+    }
+
     default:
       return {
         ...state,
