@@ -49,7 +49,9 @@ export class AppComponent implements OnInit {
   }
 
   private getPhotoAmountFromLocalStorage(): void {
-    const amount = Number(localStorage.getItem('photoAmount'));
+    const amount = Number(localStorage.getItem('photoAmount'))
+      ? Number(localStorage.getItem('photoAmount'))
+      : 9;
 
     this.settingsFacade.setPhotoAmount(amount);
   }

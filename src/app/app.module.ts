@@ -17,6 +17,7 @@ import { BreedsFacade } from './store/breeds/breeds.facade';
 import { BreedsEffects } from './store/breeds/breeds.effects';
 import { SettingsFacade } from './store/settings/settings.facade';
 import { SettingsEffects } from './store/settings/settings.effects';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +35,12 @@ import { SettingsEffects } from './store/settings/settings.effects';
       logOnly: environment.production,
     }),
   ],
-  providers: [SettingsFacade, BreedsFacade, { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
+  providers: [
+    SettingsFacade,
+    BreedsFacade,
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

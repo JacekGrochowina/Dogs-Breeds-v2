@@ -13,4 +13,26 @@
       object-fit: cover;
     }
   }
+
+  &__bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--info-bar-bg);
+    border-radius: 4px;
+    box-shadow: var(--table-error-bar-shadow);
+
+    .bar {
+      &__icon {
+        color: var(--info-bar-bg-text);
+        fill: var(--info-bar-bg-text);
+      }
+
+      &__label {
+        margin: 0;
+        color: var(--info-bar-bg-text);
+        font-weight: 500;
+      }
+    }
+  }
 }

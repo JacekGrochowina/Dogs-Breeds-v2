@@ -3,3 +3,8 @@
     <img [src]="photo.url"/>
   </div>
 </div>
+
+<div *ngIf="isInfoBarVisible$ | async" class="breed-details__bar bar px-3 py-2">
+  <mat-icon class="bar__icon mr-2">info</mat-icon>
+  <p class="bar__label m-0">Sorry, we can't find {{settingsPhotoAmount$ | async}} photos of this breed</p>
+</div>
