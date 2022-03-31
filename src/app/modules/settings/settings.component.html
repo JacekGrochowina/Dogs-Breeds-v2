@@ -6,7 +6,7 @@
 
     <div class="row">
 
-      <div class="form__row option col-6">
+      <div class="form__row option col-12 col-lg-6">
         <div class="option__text">
           <p>Set the amount of displayed photos in breed's details</p>
         </div>
@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <div class="form__row option col-6">
+      <div *ngIf="!isMobile" class="form__row option col-12 col-lg-6">
         <div class="option__text">
           <p>Set the sidenav mode</p>
         </div>
@@ -57,8 +57,18 @@
       </div>
 
       <div class="col-12 d-flex justify-content-end mt-3">
-        <button mat-stroked-button class="mr-2">Resetuj</button>
-        <button [disabled]="!form.valid || !form.dirty" mat-flat-button color="primary">Zastosuj</button>
+        <button
+          (click)="onReset()"
+          mat-stroked-button
+          type="button"
+          class="mr-2"
+        >Resetuj</button>
+        <button
+          [disabled]="!form.valid || !form.dirty"
+          mat-flat-button
+          type="submit"
+          color="primary"
+        >Zastosuj</button>
       </div>
 
     </div>

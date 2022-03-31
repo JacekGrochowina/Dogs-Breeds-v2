@@ -4,6 +4,10 @@ import { SettingsFacade } from '../../store/settings/settings.facade';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Breakpoints } from '../../shared/utils/enums/breakpoints.enum';
+import { SidenavModes } from '../../shared/utils/enums/sidenav-modes.enum';
+import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -13,16 +17,21 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SettingsComponent implements OnInit {
 
   public form!: FormGroup;
+  public isMobile!: boolean;
+  private innerWidth!: number;
   private unsubscribe$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
     private settingsService: SettingsFacade,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog,
   ) {}
 
   public ngOnInit(): void {
     this.initForm();
+    this.setInnerWidth();
+    this.setIsMobile();
   }
 
   public onSubmit(): void {
@@ -33,6 +42,26 @@ export class SettingsComponent implements OnInit {
     this.settingsService.setSidenavMode(sidenavMode);
 
     this.showSuccessSnackbar();
+  }
+
+  public onReset(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Resetowanie ustawień',
+        message: 'Czy napewno chcesz zresetować ustawienia?',
+        confirmLabel: 'Resetuj',
+        dismissLabel: 'Anuluj',
+        isAsync: false,
+        confirmed: () => {
+          this.settingsService.setPhotoAmount(9);
+          this.settingsService.setSidenavMode(SidenavModes.side);
+          dialogRef.close();
+        },
+      },
+      width: '90%',
+      maxWidth: '400px',
+    });
+
   }
 
   public initForm(): void {
@@ -69,6 +98,18 @@ export class SettingsComponent implements OnInit {
     this.snackBar.open('Zmieniono ustawienia. Zostały zapisane dla tej sesji.', 'Ok', {
       duration: 3500,
     });
+  }
+
+  private setInnerWidth(): void {
+    this.innerWidth = window.innerWidth;
+  }
+
+  private setIsMobile(): void {
+    if (this.innerWidth <= Breakpoints.lg) {
+      this.isMobile = true;
+    } else {
+      this.isMobile = false;
+    }
   }
 
 }

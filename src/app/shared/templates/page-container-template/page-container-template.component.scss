@@ -1,4 +1,9 @@
+@import "./src/styles/variables";
+
 .page-container-template {
   margin: 0 auto;
   padding: 0 3rem;
+  @media(max-width: map-get($grid-breakpoints, md)) {
+    padding: 0 1rem;
+  }
 }

@@ -1,5 +1,5 @@
-<div class="d-flex flex-wrap">
-  <div *ngFor="let photo of breedPhotosItems$ | async" class="breed-details__image">
+<div class="row no-gutters">
+  <div *ngFor="let photo of breedPhotosItems$ | async" class="breed-details__image col-12 col-sm-6 col-lg-4">
     <img [src]="photo.url"/>
   </div>
 </div>
