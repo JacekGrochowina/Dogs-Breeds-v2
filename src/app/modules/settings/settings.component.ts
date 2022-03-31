@@ -47,10 +47,10 @@ export class SettingsComponent implements OnInit {
   public onReset(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Resetowanie ustawień',
-        message: 'Czy napewno chcesz zresetować ustawienia?',
-        confirmLabel: 'Resetuj',
-        dismissLabel: 'Anuluj',
+        title: 'Reset Settings',
+        message: 'Are you sure you want to restart the settings?',
+        confirmLabel: 'Reset',
+        dismissLabel: 'Cancel',
         isAsync: false,
         confirmed: () => {
           this.settingsService.setPhotoAmount(9);
