@@ -95,7 +95,7 @@ export class SettingsComponent implements OnInit {
   }
 
   private showSuccessSnackbar(): void {
-    this.snackBar.open('Zmieniono ustawienia. Zostały zapisane dla tej sesji.', 'Ok', {
+    this.snackBar.open('Settings have been changed successfully.', 'Ok', {
       duration: 3500,
     });
   }
