@@ -1,4 +1,26 @@
-# AngularBoilerplate
+### 🔧 Technology Stack
+
+- Angular
+- TypeScript
+- RxJS
+- NgRx
+- Angular Material
+
+# Breeds Guide 🐶🐾
+
+Features:
+- display breeds list with pagination from REST API ([thedogapi.com](https://thedogapi.com/))
+- display breed's details on the subpage via unique id
+- change dark/light mode (saving in localstorage)
+- change amount of displayed photos in breed's details (saving in localstorage)
+- change sidenav mode (saving in localstorage)
+
+🔗 LIVE: [jacekcv.com/projects/dogs-breeds-v2](http://jacekcv.com/projects/dogs-breeds-v2)
+
+🌐 My website: [jacekcv.com](http://jacekcv.com/)
+
+
+# ⚙ Development
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 

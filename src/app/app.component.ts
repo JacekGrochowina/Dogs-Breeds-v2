@@ -4,6 +4,7 @@ import { SettingsFacade } from './store/settings/settings.facade';
 import { map, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { SidenavModes } from './shared/utils/enums/sidenav-modes.enum';
+import { Breakpoints } from './shared/utils/enums/breakpoints.enum';
 
 @Component({
   selector: 'app-root',
@@ -70,9 +71,15 @@ export class AppComponent implements OnInit {
         this.settingsFacade.setSidenavMode(SidenavModes.push);
         break;
       default:
-        this.settingsFacade.setSidenavMode(SidenavModes.side);
+        this.isMobile()
+          ? this.settingsFacade.setSidenavMode(SidenavModes.over)
+          : this.settingsFacade.setSidenavMode(SidenavModes.side);
         break;
     }
+  }
+
+  private isMobile(): boolean {
+    return window.innerWidth < Breakpoints.lg;
   }
 
 }

@@ -17,8 +17,6 @@ import { MatDialog } from '@angular/material/dialog';
 export class SettingsComponent implements OnInit {
 
   public form!: FormGroup;
-  public isMobile!: boolean;
-  private innerWidth!: number;
   private unsubscribe$ = new Subject<void>();
 
   constructor(
@@ -30,8 +28,6 @@ export class SettingsComponent implements OnInit {
 
   public ngOnInit(): void {
     this.initForm();
-    this.setInnerWidth();
-    this.setIsMobile();
   }
 
   public onSubmit(): void {
@@ -54,7 +50,9 @@ export class SettingsComponent implements OnInit {
         isAsync: false,
         confirmed: () => {
           this.settingsService.setPhotoAmount(9);
-          this.settingsService.setSidenavMode(SidenavModes.side);
+          this.isMobile()
+            ? this.settingsService.setSidenavMode(SidenavModes.over)
+            : this.settingsService.setSidenavMode(SidenavModes.side);
           dialogRef.close();
         },
       },
@@ -71,6 +69,10 @@ export class SettingsComponent implements OnInit {
     });
 
     this.setFormControlsValues();
+  }
+
+  public isMobile(): boolean {
+    return window.innerWidth < Breakpoints.lg;
   }
 
   private setFormControlsValues(): void {
@@ -98,18 +100,6 @@ export class SettingsComponent implements OnInit {
     this.snackBar.open('Settings have been changed successfully.', 'Ok', {
       duration: 3500,
     });
-  }
-
-  private setInnerWidth(): void {
-    this.innerWidth = window.innerWidth;
-  }
-
-  private setIsMobile(): void {
-    if (this.innerWidth <= Breakpoints.lg) {
-      this.isMobile = true;
-    } else {
-      this.isMobile = false;
-    }
   }
 
 }
